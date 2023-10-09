@@ -1,0 +1,14 @@
+.card {
+  text-align: center;
+  padding: 1rem;
+  position: relative;
+}
+
+.playButton {
+  color: rgb(77, 77, 197);
+  border-color: rgb(77, 77, 197);
+  margin: 2rem;
+  border-radius: 32px;
+  height: 4rem;
+  width: 4rem;
+}
