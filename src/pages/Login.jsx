@@ -1,14 +1,14 @@
 import classes from "./Login.module.css";
-import { useState, useRef, useContext } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-// import CartContext from "../store/cart-context";
+import { useDispatch } from "react-redux";
+import { authActions } from "../store/auth";
 
 const Login = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
-
-  //   const cartCtx = useContext(CartContext);
 
   const [isLogin, setIsLogin] = useState(true);
 
@@ -53,7 +53,7 @@ const Login = () => {
         }
       })
       .then((data) => {
-        // cartCtx.login(data.idToken);
+        dispatch(authActions.login());
         navigate("/");
       })
       .catch((err) => {

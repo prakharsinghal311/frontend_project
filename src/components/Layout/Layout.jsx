@@ -1,38 +1,30 @@
 import { Outlet, NavLink } from "react-router-dom";
-import { Container, Navbar } from "react-bootstrap";
+import Navbar from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
 import classes from "./Layout.module.css";
 import CardUI from "../UI/CardUI";
+import "bootstrap/dist/css/bootstrap.css";
 
 const Layout = () => {
   return (
     <>
-      <Navbar bg="dark" expand="sm" variant="dark">
+      <Navbar expand="lg" className="bg-body-tertiary" bg="dark">
         <Container>
-          {/* <Navbar.Brand className={classes.links}>
-            <NavLink activeclassname={classes.active} to="/home">
-              HOME
-            </NavLink>
-          </Navbar.Brand> */}
-          <Navbar.Brand className={classes.links}>
+          <Navbar.Brand>
             <NavLink activeclassname={classes.active} to="/">
               STORE
             </NavLink>
           </Navbar.Brand>
-          <Navbar.Brand className={classes.links}>
+          <Navbar.Brand>
             <NavLink activeclassname={classes.active} to="/about">
               ABOUT
             </NavLink>
           </Navbar.Brand>
-          <Navbar.Brand className={classes.links}>
+          <Navbar.Brand>
             <NavLink activeclassname={classes.active} to="/login">
               Login
             </NavLink>
           </Navbar.Brand>
-          {/* <Navbar.Brand className={classes.links}>
-            <NavLink activeclassname={classes.active} to="/ContactUS">
-              Contact US
-            </NavLink>
-          </Navbar.Brand> */}
         </Container>
       </Navbar>
       <CardUI />
