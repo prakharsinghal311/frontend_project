@@ -33,7 +33,7 @@ const Cart = (props) => {
     if (flag === 1) {
       axios
         .delete(
-          `https://crudcrud.com/api/5508a1dcc0ea4ce3b14bd3981c5aa9f5/cart${useremailid}/${userData_id}`
+          `https://crudcrud.com/api/85245c92a583416a9051be9e15ceaed8/cart${useremailid}/${userData_id}`
         )
         .then((response) => {
           console.log(response.data);
@@ -44,7 +44,7 @@ const Cart = (props) => {
     } else {
       axios
         .get(
-          `https://crudcrud.com/api/5508a1dcc0ea4ce3b14bd3981c5aa9f5/cart${useremailid}`
+          `https://crudcrud.com/api/85245c92a583416a9051be9e15ceaed8/cart${useremailid}`
         )
         .then((response) => {
           response.data[productToBeDeleteIndex].quantity =
@@ -53,7 +53,7 @@ const Cart = (props) => {
 
           axios
             .put(
-              `https://crudcrud.com/api/5508a1dcc0ea4ce3b14bd3981c5aa9f5/cart${useremailid}/${userData_id}`,
+              `https://crudcrud.com/api/85245c92a583416a9051be9e15ceaed8/cart${useremailid}/${userData_id}`,
               response.data[productToBeDeleteIndex]
             )
             .then((response) => {

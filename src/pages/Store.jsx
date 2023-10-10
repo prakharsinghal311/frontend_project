@@ -20,7 +20,7 @@ const Store = () => {
   useEffect(() => {
     axios
       .get(
-        `https://crudcrud.com/api/5508a1dcc0ea4ce3b14bd3981c5aa9f5/cart${useremailid}`
+        `https://crudcrud.com/api/85245c92a583416a9051be9e15ceaed8/cart${useremailid}`
       )
       .then((response) => {
         dispatch(itemActions.updateItem(response.data));

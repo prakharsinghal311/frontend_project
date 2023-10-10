@@ -1,8 +1,11 @@
 import classes from "./Login.module.css";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { authActions } from "../store/auth";
+import { signInWithGoogle, signOutHandler } from "../Firebase";
+import { auth, provider } from "../config";
+import { signInWithPopup, FacebookAuthProvider } from "firebase/auth";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -61,6 +64,49 @@ const Login = () => {
       });
   };
 
+  const googleSignInHandler = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const name = result.user.displayName;
+        const email = result.user.email;
+        const profilePic = result.user.photoURL;
+
+        localStorage.setItem("name", name);
+        localStorage.setItem("email", email);
+        localStorage.setItem("profilePic", profilePic);
+        //   dispatch(authActions.login());
+        //   navigate("/");
+        //   <PrivateRoute status={"pass"} />;
+        dispatch(authActions.login());
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const facebookSignInHandler = () => {
+    const provider = new FacebookAuthProvider();
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const name = result.user.displayName;
+        const email = result.user.email;
+        const profilePic = result.user.photoURL;
+
+        localStorage.setItem("name", name);
+        localStorage.setItem("email", email);
+        localStorage.setItem("profilePic", profilePic);
+        //   dispatch(authActions.login());
+        //   navigate("/");
+        //   <PrivateRoute status={"pass"} />;
+        dispatch(authActions.login());
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <section className={classes.auth}>
       <h1>Login</h1>
@@ -89,6 +135,15 @@ const Login = () => {
           </button>
         </div>
       </form>
+      <div className={classes.actions}>
+        <button onClick={googleSignInHandler}>Sign in with Google</button>
+      </div>
+      <div className={classes.actions}>
+        <button onClick={facebookSignInHandler}>Sign in with Facebook</button>
+      </div>
+      {/* <div className={classes.actions}>
+        <button onClick={signOutHandler}>Sign Out</button>
+      </div> */}
     </section>
   );
 };

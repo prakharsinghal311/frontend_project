@@ -30,7 +30,7 @@ const ProductItems = (props) => {
 
     axios
       .get(
-        `https://crudcrud.com/api/5508a1dcc0ea4ce3b14bd3981c5aa9f5/cart${useremailid}`
+        `https://crudcrud.com/api/85245c92a583416a9051be9e15ceaed8/cart${useremailid}`
       )
       .then((response) => {
         console.log(response.data);
@@ -42,7 +42,7 @@ const ProductItems = (props) => {
         if (existingProductIdIndex === -1) {
           axios
             .post(
-              `https://crudcrud.com/api/5508a1dcc0ea4ce3b14bd3981c5aa9f5/cart${useremailid}`,
+              `https://crudcrud.com/api/85245c92a583416a9051be9e15ceaed8/cart${useremailid}`,
               userData
             )
             .then((response) => {
@@ -58,7 +58,7 @@ const ProductItems = (props) => {
             parseInt(response.data[existingProductIdIndex].quantity) + 1;
           axios
             .put(
-              `https://crudcrud.com/api/5508a1dcc0ea4ce3b14bd3981c5aa9f5/cart${useremailid}/${userData_id}`,
+              `https://crudcrud.com/api/85245c92a583416a9051be9e15ceaed8/cart${useremailid}/${userData_id}`,
               response.data[existingProductIdIndex]
             )
             .then((response) => {
